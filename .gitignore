@@ -24,7 +24,7 @@ pnpm-debug.log*
 .idea/
 
 # local data / python
-data/
+/data/
 .venv/
 __pycache__/
 .vercel/
