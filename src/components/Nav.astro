@@ -1,0 +1,51 @@
+---
+import Icon from './Icon.astro';
+import { profile } from '../data/site';
+
+const links = [
+  { href: '#experience', label: 'Experience' },
+  { href: '#projects', label: 'Projects' },
+  { href: '#education', label: 'Education' },
+  { href: '#contact', label: 'Contact' },
+];
+const initials = profile.name.split(' ').map((p) => p[0]).join('');
+---
+
+<header class="fixed inset-x-0 top-0 z-50">
+  <nav
+    class="mt-3 flex max-w-5xl items-center justify-between rounded-2xl border border-[var(--border)] bg-[color-mix(in_srgb,var(--bg)_75%,transparent)] px-4 py-2.5 backdrop-blur-md mx-4 sm:mx-auto"
+    aria-label="Main"
+  >
+    <a href="#top" class="flex items-center gap-2 font-semibold tracking-tight">
+      <span class="grid size-8 place-items-center rounded-lg bg-gradient-to-br from-[var(--accent)] to-[var(--accent-2)] text-sm text-white">{initials}</span>
+      <span class="hidden sm:inline">{profile.name}</span>
+    </a>
+    <div class="flex items-center gap-1">
+      <ul class="hidden items-center gap-1 md:flex">
+        {links.map((l) => (
+          <li>
+            <a href={l.href} class="rounded-lg px-3 py-1.5 text-sm text-[var(--muted)] transition-colors hover:bg-[var(--surface-2)] hover:text-[var(--text)]">{l.label}</a>
+          </li>
+        ))}
+      </ul>
+      <button
+        id="theme-toggle"
+        type="button"
+        class="grid size-9 place-items-center rounded-lg text-[var(--muted)] transition-colors hover:bg-[var(--surface-2)] hover:text-[var(--text)]"
+        aria-label="Toggle colour theme"
+      >
+        <span class="hidden dark:block"><Icon name="sun" /></span>
+        <span class="block dark:hidden"><Icon name="moon" /></span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<script>
+  document.getElementById('theme-toggle')?.addEventListener('click', () => {
+    const d = document.documentElement;
+    const next = d.dataset.theme === 'dark' ? 'light' : 'dark';
+    d.dataset.theme = next;
+    try { localStorage.setItem('theme', next); } catch {}
+  });
+</script>

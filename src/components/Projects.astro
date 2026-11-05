@@ -1,0 +1,76 @@
+---
+import { Image } from 'astro:assets';
+import SectionHeading from './SectionHeading.astro';
+import Icon from './Icon.astro';
+import { projects } from '../data/site';
+import fraudDemo from '../assets/fraud-demo.png';
+
+const images: Record<string, ImageMetadata> = { 'fraud-demo': fraudDemo };
+const bases = ['A', 'C', 'G', 'U'];
+// Deterministic pseudo-random RNA strand for the m6A card art, with a DRACH motif highlighted.
+const strand = Array.from({ length: 72 }, (_, i) => bases[(i * 7 + (i % 5) * 3) % 4]);
+const motifAt = new Set([38, 39, 40, 41, 42]);
+const motif = ['G', 'G', 'A', 'C', 'U'];
+motif.forEach((b, k) => (strand[38 + k] = b));
+---
+
+<section id="projects" class="mx-auto max-w-5xl px-4 py-20">
+  <SectionHeading index="02" title="Projects" subtitle="Machine learning projects with careful evaluation and reproducible results." />
+
+  <div class="grid gap-6 md:grid-cols-2">
+    {projects.map((p, i) => (
+      <article class="card card-lift reveal group flex flex-col overflow-hidden" style={`--delay:${i * 100}ms`}>
+        <div class="relative aspect-[16/10] overflow-hidden border-b border-[var(--border)] bg-[var(--surface-2)]">
+          {p.image && images[p.image] ? (
+            <Image
+              src={images[p.image]}
+              alt={p.imageAlt ?? p.title}
+              widths={[480, 800]}
+              sizes="(min-width: 768px) 480px, 100vw"
+              loading="lazy"
+              class="size-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"
+            />
+          ) : p.art === 'rna' ? (
+            <div class="absolute inset-0 grid place-items-center p-6" aria-hidden="true">
+              <div class="grid grid-cols-12 gap-1.5 font-mono text-xs transition-transform duration-700 group-hover:scale-[1.04] sm:text-sm">
+                {strand.map((b, j) => (
+                  <span class={motifAt.has(j)
+                    ? 'grid size-6 place-items-center rounded-md bg-gradient-to-br from-[var(--accent)] to-[var(--accent-2)] font-semibold text-white sm:size-7'
+                    : 'grid size-6 place-items-center rounded-md border border-[var(--border)] bg-[var(--surface)] text-[var(--muted)] sm:size-7'}>{b}</span>
+                ))}
+              </div>
+              <span class="absolute right-4 bottom-3 font-mono text-[10px] text-[var(--muted)]">DRACH motif · m6A site</span>
+            </div>
+          ) : null}
+          {p.note && <span class="chip absolute top-3 left-3 bg-[var(--surface)]">{p.note}</span>}
+        </div>
+
+        <div class="flex flex-1 flex-col p-6">
+          <h3 class="text-xl font-semibold tracking-tight">{p.title}</h3>
+          <p class="mt-2 text-sm text-[var(--text)]">{p.blurb}</p>
+          <ul class="mt-4 space-y-2 text-sm text-[var(--muted)]">
+            {p.points.map((pt) => (
+              <li class="flex gap-3">
+                <span class="mt-2 size-1.5 shrink-0 rounded-full bg-[var(--accent-2)]" aria-hidden="true"></span>
+                <span>{pt}</span>
+              </li>
+            ))}
+          </ul>
+          <div class="mt-5 flex flex-wrap gap-2">
+            {p.tags.map((t) => <span class="chip">{t}</span>)}
+          </div>
+          <div class="mt-auto flex flex-wrap gap-2 pt-6">
+            {p.demo && (
+              <a href={p.demo} target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-lg bg-[var(--text)] px-4 py-2 text-sm font-medium text-[var(--bg)] transition-transform hover:-translate-y-0.5">
+                <Icon name="external" /> Live demo
+              </a>
+            )}
+            <a href={p.repo} target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-lg border border-[var(--border)] px-4 py-2 text-sm font-medium transition-colors hover:border-[var(--accent)]">
+              <Icon name="github" /> Code
+            </a>
+          </div>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>
