@@ -3,14 +3,14 @@ import Icon from './Icon.astro';
 import { profile, highlights } from '../data/site';
 ---
 
-<section id="top" class="pt-28 pb-4 sm:pt-40 sm:pb-8">
+<section id="top" class="pt-36 pb-4 sm:pt-40 sm:pb-8">
   <div class="mx-auto max-w-5xl px-4">
-    <h1 class="text-4xl font-bold tracking-tight text-balance sm:text-6xl">
+    <h1 class="text-4xl leading-[1.08] font-bold tracking-tight text-balance sm:text-6xl sm:leading-[1.05]">
       Hi, I'm {profile.name.split(' ')[0]}.<br />
-      <span class="text-[var(--muted)]">I turn data into tools people use.</span>
+      <span class="font-medium">I turn data into tools people use.</span>
     </h1>
 
-    <p class="mt-6 max-w-2xl text-lg text-[var(--muted)]">
+    <p class="mt-6 max-w-2xl text-lg">
       {profile.role}. {profile.pitch}
     </p>
     <p class="mt-3 text-sm text-[var(--muted)]">Data Science Intern at GovTech Singapore</p>
@@ -21,20 +21,20 @@ import { profile, highlights } from '../data/site';
         <span class="transition-transform group-hover:translate-x-0.5"><Icon name="arrow" /></span>
       </a>
       {profile.resume && (
-        <a href={profile.resume} class="inline-flex items-center gap-2 rounded-md border border-[var(--border)] px-5 py-2.5 text-sm font-medium transition-colors hover:border-[var(--text)]">
+        <a href={profile.resume} class="inline-flex items-center gap-2 rounded-md border border-[var(--border-strong)] px-5 py-2.5 text-sm font-medium transition-colors hover:border-[var(--text)]">
           <Icon name="file" /> Resume
         </a>
       )}
       <div class="flex items-center gap-1 sm:ml-2">
-        <a href={profile.github} target="_blank" rel="noopener" aria-label="GitHub" class="grid size-10 place-items-center rounded-md text-[var(--muted)] transition-colors hover:text-[var(--text)]"><Icon name="github" class="size-5" /></a>
-        <a href={profile.linkedin} target="_blank" rel="noopener" aria-label="LinkedIn" class="grid size-10 place-items-center rounded-md text-[var(--muted)] transition-colors hover:text-[var(--text)]"><Icon name="linkedin" class="size-5" /></a>
-        <a href={`mailto:${profile.email}`} aria-label="Email" class="grid size-10 place-items-center rounded-md text-[var(--muted)] transition-colors hover:text-[var(--text)]"><Icon name="mail" class="size-5" /></a>
+        <a href={profile.github} target="_blank" rel="noopener" aria-label="GitHub" class="grid size-11 place-items-center rounded-md text-[var(--muted)] transition-colors hover:text-[var(--text)]"><Icon name="github" class="size-5" /></a>
+        <a href={profile.linkedin} target="_blank" rel="noopener" aria-label="LinkedIn" class="grid size-11 place-items-center rounded-md text-[var(--muted)] transition-colors hover:text-[var(--text)]"><Icon name="linkedin" class="size-5" /></a>
+        <a href={`mailto:${profile.email}`} aria-label="Email" class="grid size-11 place-items-center rounded-md text-[var(--muted)] transition-colors hover:text-[var(--text)]"><Icon name="mail" class="size-5" /></a>
       </div>
     </div>
 
-    <dl class="mt-14 grid gap-6 sm:grid-cols-3 sm:gap-8">
+    <dl class="mt-14 grid gap-6 border-t border-[var(--border)] pt-6 sm:grid-cols-3 sm:gap-8">
       {highlights.map((h) => (
-        <div class="flex flex-col border-t border-[var(--border)] pt-4">
+        <div class="flex flex-col">
           <dt class="order-2 mt-1 text-sm text-[var(--muted)]">{h.label}</dt>
           <dd class="order-1 text-2xl font-semibold tracking-tight tabular-nums">{h.value}</dd>
         </div>

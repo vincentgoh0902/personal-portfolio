@@ -34,12 +34,12 @@ const canonical = site ? new URL(Astro.url.pathname, site).href : undefined;
     <meta name="twitter:card" content="summary" />
 
     <script is:inline>
-      // Set theme before paint to avoid a flash. Defaults to dark.
+      // Set theme before paint to avoid a flash. A saved choice wins; otherwise follow the device setting.
       (() => {
         const d = document.documentElement;
         let t = null;
         try { t = localStorage.getItem('theme'); } catch {}
-        d.dataset.theme = t ?? 'dark';
+        d.dataset.theme = t ?? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
       })();
     </script>
   </head>

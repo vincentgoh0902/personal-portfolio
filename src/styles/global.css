@@ -14,9 +14,13 @@
   --bg: #f3ecdf;
   --surface: #faf6ee;
   --border: #ddd3c1;
+  /* Edges of controls must reach 3:1 against the page. */
+  --border-strong: #9b917f;
   --text: #1d1a16;
   --muted: #5f5a52;
   --accent: #1f5c4a;
+  /* Brighter than the accent so the ring separates from the near-black button. */
+  --focus: #2e8b68;
   color-scheme: light;
 }
 
@@ -25,15 +29,24 @@
   --bg: #141311;
   --surface: #1c1a17;
   --border: #2e2b26;
+  --border-strong: #6b655c;
   --text: #ece6da;
   --muted: #a8a196;
   --accent: #8cc7b0;
+  --focus: #8cc7b0;
   color-scheme: dark;
 }
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 5rem;
+  /* Clears the fixed header (two rows on phones, one from md up). */
+  scroll-padding-top: 7rem;
+}
+
+@media (min-width: 48rem) {
+  html {
+    scroll-padding-top: 5rem;
+  }
 }
 
 body {
@@ -47,9 +60,9 @@ body {
   color: var(--bg);
 }
 
-/* One focus ring for every control. The accent is reserved for focus and link hover. */
+/* One focus ring for every control. Colour is reserved for focus and link hover. */
 :focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--focus);
   outline-offset: 3px;
 }
 

@@ -3,10 +3,10 @@ import SectionHeading from './SectionHeading.astro';
 import { education } from '../data/site';
 ---
 
-<section id="education" class="mx-auto max-w-5xl px-4 py-20">
+<section id="education" class="mx-auto max-w-5xl px-4 py-12 sm:py-16">
   <SectionHeading title="Education" />
 
-  <div class="grid gap-2 border-t border-[var(--border)] pt-8 sm:grid-cols-[11rem_1fr] sm:gap-8">
+  <div class="grid gap-2 sm:grid-cols-[14.5rem_1fr] sm:gap-8">
     <p class="text-sm text-[var(--muted)] tabular-nums sm:pt-1">{education.period}</p>
     <div>
       <h3 class="text-lg font-semibold">{education.school}</h3>

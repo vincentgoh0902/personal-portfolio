@@ -1,22 +1,23 @@
 ---
 import SectionHeading from './SectionHeading.astro';
+import Figures from './Figures.astro';
 import { experience } from '../data/site';
 ---
 
-<section id="experience" class="mx-auto max-w-5xl px-4 py-20">
+<section id="experience" class="mx-auto max-w-5xl px-4 py-12 sm:py-16">
   <SectionHeading title="Experience" subtitle="Internships building data products, LLM systems and analytics in Singapore's public and private sectors." />
 
-  <ol class="divide-y divide-[var(--border)] border-t border-[var(--border)]">
+  <ol class="divide-y divide-[var(--border)]">
     {experience.map((job) => (
-      <li class="grid gap-2 py-8 sm:grid-cols-[11rem_1fr] sm:gap-8">
+      <li class="grid gap-2 py-8 first:pt-0 last:pb-0 sm:grid-cols-[14.5rem_1fr] sm:gap-8">
         <p class="text-sm text-[var(--muted)] tabular-nums sm:pt-1">{job.period}</p>
-        <article>
+        <article class="max-w-[62ch]">
           <h3 class="text-lg font-semibold">
             {job.role} <span class="font-normal text-[var(--muted)]" aria-hidden="true">·</span> {job.company}
           </h3>
-          <p class="mt-2">{job.summary}</p>
-          <ul class="mt-4 list-disc space-y-2 pl-5 text-sm text-[var(--muted)] marker:text-[var(--muted)]">
-            {job.points.map((p) => <li>{p}</li>)}
+          <p class="mt-2"><Figures text={job.summary} /></p>
+          <ul class="mt-4 list-disc space-y-2 pl-5 text-[0.9375rem] leading-relaxed marker:text-[var(--muted)]">
+            {job.points.map((p) => <li><Figures text={p} /></li>)}
           </ul>
           <p class="mt-4 text-sm text-[var(--muted)]">{job.tags.join(' · ')}</p>
         </article>

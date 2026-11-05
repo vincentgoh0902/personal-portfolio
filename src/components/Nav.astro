@@ -33,6 +33,13 @@ const links = [
       </button>
     </div>
   </nav>
+  <ul class="mx-auto flex max-w-5xl justify-between px-2 md:hidden">
+    {links.map((l) => (
+      <li>
+        <a href={l.href} class="flex min-h-11 items-center px-2 text-sm text-[var(--muted)] transition-colors hover:text-[var(--text)]">{l.label}</a>
+      </li>
+    ))}
+  </ul>
 </header>
 
 <script>

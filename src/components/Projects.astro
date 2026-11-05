@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import SectionHeading from './SectionHeading.astro';
 import Icon from './Icon.astro';
+import Figures from './Figures.astro';
 import { projects } from '../data/site';
 import fraudDemo from '../assets/fraud-demo.png';
 
@@ -14,13 +15,13 @@ const motif = ['G', 'G', 'A', 'C', 'U'];
 motif.forEach((b, k) => (strand[38 + k] = b));
 ---
 
-<section id="projects" class="mx-auto max-w-5xl px-4 py-20">
+<section id="projects" class="mx-auto max-w-5xl px-4 py-12 sm:py-16">
   <SectionHeading title="Projects" subtitle="Machine learning projects with careful evaluation and reproducible results." />
 
   <div class="grid gap-14 md:grid-cols-2 md:gap-10">
     {projects.map((p) => (
       <article class="flex flex-col">
-        <div class="relative aspect-[16/10] overflow-hidden rounded-lg border border-[var(--border)] bg-[var(--surface)]">
+        <div class="relative aspect-[16/10] overflow-hidden rounded-lg border border-[var(--border)] bg-[var(--surface)] p-2">
           {p.image && images[p.image] ? (
             <Image
               src={images[p.image]}
@@ -28,7 +29,7 @@ motif.forEach((b, k) => (strand[38 + k] = b));
               widths={[480, 800]}
               sizes="(min-width: 768px) 480px, 100vw"
               loading="lazy"
-              class="size-full object-cover object-top"
+              class="size-full rounded-sm object-cover object-top dark:opacity-85"
             />
           ) : p.art === 'rna' ? (
             <div class="absolute inset-0 grid place-items-center p-6" aria-hidden="true">
@@ -46,22 +47,22 @@ motif.forEach((b, k) => (strand[38 + k] = b));
 
         <h3 class="mt-6 text-xl font-semibold tracking-tight">
           {p.title}
-          {p.note && <span class="ml-2 align-middle text-sm font-normal text-[var(--muted)]">{p.note}</span>}
+          {p.note && <span class="ml-2 align-middle text-sm font-normal whitespace-nowrap text-[var(--muted)]">{p.note}</span>}
         </h3>
-        <p class="mt-2">{p.blurb}</p>
-        <ul class="mt-4 list-disc space-y-2 pl-5 text-sm text-[var(--muted)] marker:text-[var(--muted)]">
-          {p.points.map((pt) => <li>{pt}</li>)}
+        <p class="mt-2"><Figures text={p.blurb} /></p>
+        <ul class="mt-4 list-disc space-y-2 pl-5 text-[0.9375rem] leading-relaxed marker:text-[var(--muted)]">
+          {p.points.map((pt) => <li><Figures text={pt} /></li>)}
         </ul>
         <p class="mt-4 text-sm text-[var(--muted)]">{p.tags.join(' · ')}</p>
         {(p.demo || p.repo) && (
-          <div class="mt-5 flex flex-wrap gap-x-6 gap-y-2 text-sm font-medium">
+          <div class="mt-3 flex flex-wrap gap-x-6 text-sm font-medium">
             {p.demo && (
-              <a href={p.demo} target="_blank" rel="noopener" class="text-link inline-flex items-center gap-1.5">
+              <a href={p.demo} target="_blank" rel="noopener" class="text-link inline-flex min-h-11 items-center gap-1.5">
                 <Icon name="external" /> Live demo
               </a>
             )}
             {p.repo && (
-              <a href={p.repo} target="_blank" rel="noopener" class="text-link inline-flex items-center gap-1.5">
+              <a href={p.repo} target="_blank" rel="noopener" class="text-link inline-flex min-h-11 items-center gap-1.5">
                 <Icon name="github" /> Code
               </a>
             )}
