@@ -18,8 +18,8 @@ motif.forEach((b, k) => (strand[38 + k] = b));
   <SectionHeading title="Projects" subtitle="Machine learning projects with careful evaluation and reproducible results." />
 
   <div class="grid gap-14 md:grid-cols-2 md:gap-10">
-    {projects.map((p, i) => (
-      <article class="reveal flex flex-col" style={`--delay:${i * 100}ms`}>
+    {projects.map((p) => (
+      <article class="flex flex-col">
         <div class="relative aspect-[16/10] overflow-hidden rounded-lg border border-[var(--border)] bg-[var(--surface)]">
           {p.image && images[p.image] ? (
             <Image
@@ -49,7 +49,7 @@ motif.forEach((b, k) => (strand[38 + k] = b));
           {p.note && <span class="ml-2 align-middle text-sm font-normal text-[var(--muted)]">{p.note}</span>}
         </h3>
         <p class="mt-2">{p.blurb}</p>
-        <ul class="mt-4 list-disc space-y-2 pl-5 text-sm text-[var(--muted)] marker:text-[var(--border)]">
+        <ul class="mt-4 list-disc space-y-2 pl-5 text-sm text-[var(--muted)] marker:text-[var(--muted)]">
           {p.points.map((pt) => <li>{pt}</li>)}
         </ul>
         <p class="mt-4 text-sm text-[var(--muted)]">{p.tags.join(' · ')}</p>
