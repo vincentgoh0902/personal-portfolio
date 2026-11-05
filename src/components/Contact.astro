@@ -5,29 +5,25 @@ const year = new Date().getFullYear();
 ---
 
 <section id="contact" class="mx-auto max-w-5xl px-4 pt-20 pb-10">
-  <div class="card reveal relative overflow-hidden p-8 text-center sm:p-12">
-    <div class="pointer-events-none absolute inset-0 -z-0 bg-[radial-gradient(ellipse_at_top,var(--glow),transparent_70%)]" aria-hidden="true"></div>
-    <div class="relative">
-      <p class="font-mono text-sm text-[var(--accent)]">04</p>
-      <h2 class="mt-1 text-3xl font-bold tracking-tight sm:text-4xl">Let's talk</h2>
-      <p class="mx-auto mt-3 max-w-xl text-[var(--muted)]">
-        I'm graduating in 2027 and open to data science, ML and AI engineering roles. The fastest way to reach me is email.
-      </p>
-      <div class="mt-8 flex flex-wrap justify-center gap-3">
-        <a href={`mailto:${profile.email}`} class="inline-flex items-center gap-2 rounded-xl bg-[var(--text)] px-5 py-2.5 text-sm font-medium text-[var(--bg)] transition-transform hover:-translate-y-0.5">
-          <Icon name="mail" /> {profile.email}
-        </a>
-        <a href={profile.linkedin} target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-xl border border-[var(--border)] bg-[var(--surface)] px-5 py-2.5 text-sm font-medium transition-colors hover:border-[var(--accent)]">
-          <Icon name="linkedin" /> LinkedIn
-        </a>
-        <a href={profile.github} target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-xl border border-[var(--border)] bg-[var(--surface)] px-5 py-2.5 text-sm font-medium transition-colors hover:border-[var(--accent)]">
-          <Icon name="github" /> GitHub
-        </a>
-      </div>
+  <div class="reveal border-t border-[var(--border)] pt-12">
+    <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Let's talk</h2>
+    <p class="mt-3 max-w-xl text-[var(--muted)]">
+      I'm graduating in 2027 and open to data science, ML and AI engineering roles. The fastest way to reach me is email.
+    </p>
+    <div class="mt-8 flex flex-wrap gap-3">
+      <a href={`mailto:${profile.email}`} class="inline-flex items-center gap-2 rounded-md bg-[var(--text)] px-5 py-2.5 text-sm font-medium text-[var(--bg)] transition-opacity hover:opacity-85">
+        <Icon name="mail" /> {profile.email}
+      </a>
+      <a href={profile.linkedin} target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-md border border-[var(--border)] px-5 py-2.5 text-sm font-medium transition-colors hover:border-[var(--text)]">
+        <Icon name="linkedin" /> LinkedIn
+      </a>
+      <a href={profile.github} target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-md border border-[var(--border)] px-5 py-2.5 text-sm font-medium transition-colors hover:border-[var(--text)]">
+        <Icon name="github" /> GitHub
+      </a>
     </div>
   </div>
 
-  <footer class="mt-10 flex flex-col items-center justify-between gap-2 text-xs text-[var(--muted)] sm:flex-row">
+  <footer class="mt-16 flex flex-col justify-between gap-2 text-xs text-[var(--muted)] sm:flex-row">
     <p>© {year} {profile.name}</p>
     <p class="inline-flex items-center gap-1"><Icon name="pin" class="size-3.5" /> {profile.location}</p>
   </footer>
