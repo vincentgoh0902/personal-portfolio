@@ -91,7 +91,7 @@ export const projects: Project[] = [
   {
     title: 'Predicting m6A RNA Modification',
     description:
-      'Classifying RNA modification sites from nanopore signals. Best model reached 0.94 ROC AUC on held-out data. My part: I built the classical-model pipeline (Extra Trees, random forest, gradient boosting, logistic regression and SVM).',
+      'Classifying RNA modification sites from nanopore signals, comparing classical models with a multiple-instance learning model, evaluated by PR-AUC on a fully held-out external dataset. My part: I built the classical models (Extra Trees, random forest, gradient boosting, logistic regression and RBF SVM), with leakage-safe preprocessing, calibration and validation-based model selection.',
     tags: ['Python', 'scikit-learn', 'Multiple-instance learning', 'Bioinformatics'],
     icon: 'dna',
     note: 'Group project',
