@@ -36,8 +36,8 @@ motif.forEach((b, k) => (strand[38 + k] = b));
               <div class="grid grid-cols-12 gap-1.5 font-mono text-xs sm:text-sm">
                 {strand.map((b, j) => (
                   <span class={motifAt.has(j)
-                    ? 'grid size-6 place-items-center rounded-sm bg-[var(--text)] font-semibold text-[var(--bg)] sm:size-7'
-                    : 'grid size-6 place-items-center rounded-sm text-[var(--muted)] sm:size-7'}>{b}</span>
+                    ? 'grid size-5 place-items-center rounded-sm bg-[var(--text)] text-[var(--bg)] sm:size-7'
+                    : 'grid size-5 place-items-center rounded-sm text-[var(--muted)] sm:size-7'}>{b}</span>
                 ))}
               </div>
               <span class="absolute right-4 bottom-3 font-mono text-xs text-[var(--muted)]">DRACH motif · m6A site</span>
@@ -47,13 +47,13 @@ motif.forEach((b, k) => (strand[38 + k] = b));
 
         <h3 class="mt-6 text-xl font-semibold tracking-tight">
           {p.title}
-          {p.note && <span class="ml-2 align-middle text-sm font-normal whitespace-nowrap text-[var(--muted)]">{p.note}</span>}
+          {p.note && <span class="ml-2 align-middle font-mono text-[0.8125rem] font-normal whitespace-nowrap text-[var(--muted)]">{p.note}</span>}
         </h3>
         <p class="mt-2"><Figures text={p.blurb} /></p>
         <ul class="mt-4 list-disc space-y-2 pl-5 text-[0.9375rem] leading-relaxed marker:text-[var(--muted)]">
           {p.points.map((pt) => <li><Figures text={pt} /></li>)}
         </ul>
-        <p class="mt-4 text-sm text-[var(--muted)]">{p.tags.join(' · ')}</p>
+        <p class="mt-4 font-mono text-[0.8125rem] text-[var(--muted)]">{p.tags.map((t, i, a) => <span class="whitespace-nowrap">{t}{i < a.length - 1 && ' ·'}</span>).reduce((acc, el) => [...acc, ' ', el], [] as any[]).slice(1)}</p>
         {(p.demo || p.repo) && (
           <div class="mt-3 flex flex-wrap gap-x-6 text-sm font-medium">
             {p.demo && (

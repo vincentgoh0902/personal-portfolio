@@ -7,16 +7,16 @@ import { education } from '../data/site';
   <SectionHeading title="Education" />
 
   <div class="grid gap-2 sm:grid-cols-[14.5rem_1fr] sm:gap-8">
-    <p class="text-sm text-[var(--muted)] tabular-nums sm:pt-1">{education.period}</p>
+    <p class="font-mono text-[0.8125rem] text-[var(--muted)] sm:pt-2">{education.period}</p>
     <div>
       <h3 class="text-lg font-semibold">{education.school}</h3>
       <p class="mt-1 text-[var(--muted)]">{education.degree}</p>
 
-      <h4 class="mt-8 text-sm font-semibold">Relevant coursework</h4>
+      <h4 class="mt-8 font-mono text-[0.8125rem] text-[var(--muted)]">Relevant coursework</h4>
       <ul class="mt-3 grid gap-x-8 gap-y-2 text-sm sm:grid-cols-2">
         {education.coursework.map((c) => (
           <li class="flex gap-3">
-            <span class="w-16 shrink-0 text-[var(--muted)] tabular-nums">{c.code}</span>
+            <span class="w-16 shrink-0 font-mono text-[0.8125rem] leading-5 text-[var(--muted)]">{c.code}</span>
             <span>{c.name}</span>
           </li>
         ))}

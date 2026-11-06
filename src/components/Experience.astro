@@ -10,7 +10,7 @@ import { experience } from '../data/site';
   <ol class="divide-y divide-[var(--border)]">
     {experience.map((job) => (
       <li class="grid gap-2 py-8 first:pt-0 last:pb-0 sm:grid-cols-[14.5rem_1fr] sm:gap-8">
-        <p class="text-sm text-[var(--muted)] tabular-nums sm:pt-1">{job.period}</p>
+        <p class="font-mono text-[0.8125rem] text-[var(--muted)] sm:pt-2">{job.period}</p>
         <article class="max-w-[62ch]">
           <h3 class="text-lg font-semibold">
             {job.role} <span class="font-normal text-[var(--muted)]" aria-hidden="true">·</span> {job.company}
@@ -19,7 +19,7 @@ import { experience } from '../data/site';
           <ul class="mt-4 list-disc space-y-2 pl-5 text-[0.9375rem] leading-relaxed marker:text-[var(--muted)]">
             {job.points.map((p) => <li><Figures text={p} /></li>)}
           </ul>
-          <p class="mt-4 text-sm text-[var(--muted)]">{job.tags.join(' · ')}</p>
+          <p class="mt-4 font-mono text-[0.8125rem] text-[var(--muted)]">{job.tags.map((t, i, a) => <span class="whitespace-nowrap">{t}{i < a.length - 1 && ' ·'}</span>).reduce((acc, el) => [...acc, ' ', el], [] as any[]).slice(1)}</p>
         </article>
       </li>
     ))}

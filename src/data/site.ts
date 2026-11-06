@@ -2,12 +2,12 @@
 
 export const profile = {
   name: 'Vincent Goh',
-  headline: 'I build LLM and data tools, and measure whether they work.',
   tagline: 'Data Science · LLMs · AI Engineering',
-  // The first sentence of the summary doubles as the meta / Open Graph description.
+  // The first and last sentences of the summary double as the meta / Open Graph description.
   summary: [
     'I’m a final-year Data Science student at NUS and a Data Science Intern at GovTech, where I build LLM-powered tools from prototype to production.',
     'Previously at CPF Board, I built a RAG agent that helps analysts find the right data in a large warehouse.',
+    'I care most about measuring whether these systems actually work.',
   ],
   location: 'Singapore',
   email: 'vincentgoh.kaiswee@gmail.com',
