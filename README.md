@@ -2,7 +2,7 @@
 
 My personal portfolio: internships, projects and education.
 
-**Live:** _coming soon_
+**Live:** https://vincentgoh.vercel.app
 
 Built with [Astro](https://astro.build) and Tailwind CSS. It ships as static HTML with a few lines of JavaScript, so it loads fast on phones.
 
