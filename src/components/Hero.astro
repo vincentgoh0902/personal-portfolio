@@ -13,16 +13,12 @@ import { profile } from '../data/site';
     </p>
 
     <div class="mt-8 flex flex-wrap items-center gap-3">
-      <a href="#projects" class="group inline-flex items-center gap-2 rounded-md bg-[var(--text)] px-5 py-2.5 text-sm font-medium text-[var(--bg)] transition-opacity hover:opacity-85">
-        View my work
-        <span class="transition-transform group-hover:translate-x-0.5"><Icon name="arrow" /></span>
-      </a>
       {profile.resume && (
         <a href={profile.resume} class="inline-flex items-center gap-2 rounded-md border border-[var(--border-strong)] px-5 py-2.5 text-sm font-medium transition-colors hover:border-[var(--text)]">
           <Icon name="file" /> Resume
         </a>
       )}
-      <div class="flex items-center gap-1 sm:ml-2">
+      <div class="-ml-3 flex items-center gap-1">
         <a href={profile.github} target="_blank" rel="noopener" aria-label="GitHub" class="grid size-11 place-items-center rounded-md text-[var(--muted)] transition-colors hover:text-[var(--text)]"><Icon name="github" class="size-5" /></a>
         <a href={profile.linkedin} target="_blank" rel="noopener" aria-label="LinkedIn" class="grid size-11 place-items-center rounded-md text-[var(--muted)] transition-colors hover:text-[var(--text)]"><Icon name="linkedin" class="size-5" /></a>
         <a href={`mailto:${profile.email}`} aria-label="Email" class="grid size-11 place-items-center rounded-md text-[var(--muted)] transition-colors hover:text-[var(--text)]"><Icon name="mail" class="size-5" /></a>

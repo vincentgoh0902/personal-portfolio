@@ -1,7 +1,7 @@
 ---
 // Small inline icon set (no icon library, no extra requests).
 interface Props {
-  name: 'github' | 'linkedin' | 'mail' | 'external' | 'file' | 'sun' | 'moon' | 'arrow' | 'cap' | 'pin';
+  name: 'github' | 'linkedin' | 'mail' | 'external' | 'file' | 'sun' | 'moon' | 'cap' | 'pin';
   class?: string;
 }
 const { name, class: cls = 'size-4' } = Astro.props;
@@ -27,9 +27,6 @@ const { name, class: cls = 'size-4' } = Astro.props;
 )}
 {name === 'moon' && (
   <svg class={cls} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
-)}
-{name === 'arrow' && (
-  <svg class={cls} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
 )}
 {name === 'cap' && (
   <svg class={cls} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg>
