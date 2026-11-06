@@ -70,57 +70,39 @@ export const experience: Experience[] = [
 
 export type Project = {
   title: string;
-  blurb: string;
-  points: string[];
+  description: string;
   tags: string[];
+  icon: 'network' | 'dna' | 'pot';
   repo?: string;
   demo?: string;
-  image?: string;
-  imageAlt?: string;
-  art?: 'rna';
   note?: string;
 };
 
 export const projects: Project[] = [
   {
     title: 'Graph-Based Fraud Detection',
-    blurb:
-      'Detecting illicit Bitcoin transactions with graph ML on the Elliptic dataset (200k transactions) under a strict temporal split, with Neo4j investigation tooling and a static demo that explains flagged transactions with SHAP.',
-    points: [
-      'Compared XGBoost against GCN, GraphSAGE, Neo4j graph features and a GNN-embedding hybrid; XGBoost reached 0.79 test PR-AUC and no graph model beat it',
-      'Showed why every model collapses after a dark-market shutdown, and that input-drift alarms could not have caught it',
-    ],
+    description:
+      'Graph ML vs XGBoost for Bitcoin fraud under a strict temporal split. XGBoost won at 0.79 PR-AUC, and I traced a 0.92 → 0.04 collapse to concept drift.',
     tags: ['PyTorch Geometric', 'XGBoost', 'Neo4j', 'MLflow', 'SHAP'],
+    icon: 'network',
     repo: 'https://github.com/vincentgoh0902/fraud-graph-detection',
     demo: 'https://vincentgoh0902.github.io/fraud-graph-detection/',
-    image: 'fraud-demo',
-    imageAlt: "The fraud demo: a flagged transaction's SHAP explanation and its 2-hop payment neighbourhood",
   },
   {
     title: 'Predicting m6A RNA Modification',
-    blurb:
-      'Classifying m6A modification sites from direct RNA nanopore sequencing signals, with a reproducible training and inference pipeline.',
-    points: [
-      'Compared Extra Trees, random forest, gradient boosting, logistic regression and multiple-instance learning across three held-out datasets',
-      'Best model (Extra Trees) reached 0.94 ROC AUC on held-out data',
-      'Packaged locked environments and pretrained models so results reproduce with one command',
-    ],
+    description:
+      'Classifying RNA modification sites from nanopore signals. Best model reached 0.94 ROC AUC on held-out data. My part: I built the classical-model pipeline (Extra Trees, random forest, gradient boosting, logistic regression and SVM).',
     tags: ['Python', 'scikit-learn', 'Multiple-instance learning', 'Bioinformatics'],
-    art: 'rna',
+    icon: 'dna',
     note: 'Group project',
   },
   {
     title: 'Recipe Saver',
-    blurb:
-      'A self-hosted app that turns a shared TikTok link into a clean recipe card, running on a four-core ARM server with no GPU and no paid APIs.',
-    points: [
-      'Reads the caption, then any linked recipe site, then the voiceover (transcribed locally with whisper.cpp), stopping once it has ingredients and steps',
-      'A rule-based parser handles most captions, with a local 3B LLM as fallback; accuracy on the sample captions rose from 12/14 to 14/14',
-    ],
+    description:
+      'A self-hosted app that turns a shared TikTok link into a recipe card, using local speech-to-text and a local LLM.',
     tags: ['Python', 'Docker', 'whisper.cpp', 'Ollama'],
+    icon: 'pot',
     repo: 'https://github.com/vincentgoh0902/recipe-saver',
-    image: 'recipe-saver',
-    imageAlt: 'Recipe Saver showing an imported pancake recipe with its title and ingredient quantities',
   },
 ];
 

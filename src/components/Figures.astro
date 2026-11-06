@@ -1,5 +1,5 @@
 ---
-// Renders a line of copy unchanged, but sets its figures (63% to 90%, 0.79 test PR-AUC, 200k, 21)
+// Renders a line of copy unchanged, but sets its figures (63% to 90%, 0.92 → 0.04, 0.79 test PR-AUC, 200k, 21)
 // in bold so the evidence is findable at a glance. Ignores digits inside names like Neo4j, m6A or Recall@10.
 interface Props {
   text: string;
@@ -8,7 +8,7 @@ const { text } = Astro.props;
 
 const num = String.raw`\d+(?:\.\d+)?(?:%|k)?`;
 const figure = new RegExp(
-  String.raw`(?<![\w@])${num}(?:\s+to\s+${num})?(?:\s+(?:test\s+)?(?:PR-AUC|ROC AUC))?(?![\w@])`,
+  String.raw`(?<![\w@])${num}(?:\s+(?:to|→)\s+${num})?(?:\s+(?:test\s+)?(?:PR-AUC|ROC AUC))?(?![\w@])`,
   'g',
 );
 

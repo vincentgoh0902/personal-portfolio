@@ -1,7 +1,7 @@
 ---
 // Small inline icon set (no icon library, no extra requests).
 interface Props {
-  name: 'github' | 'linkedin' | 'mail' | 'external' | 'file' | 'sun' | 'moon' | 'cap' | 'pin';
+  name: 'github' | 'linkedin' | 'mail' | 'external' | 'file' | 'sun' | 'moon' | 'cap' | 'pin' | 'network' | 'dna' | 'pot';
   class?: string;
 }
 const { name, class: cls = 'size-4' } = Astro.props;
@@ -33,4 +33,13 @@ const { name, class: cls = 'size-4' } = Astro.props;
 )}
 {name === 'pin' && (
   <svg class={cls} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+)}
+{name === 'network' && (
+  <svg class={cls} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="7" r="2.5"/><circle cx="9" cy="18" r="2.5"/><circle cx="19" cy="17" r="1.75"/><path d="M8.5 6.2 15.5 6.8M6.7 8.4l1.6 7.2M16.3 8.9l-5.6 7.2M11.5 17.8l5.8-.6"/></svg>
+)}
+{name === 'dna' && (
+  <svg class={cls} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3c0 4.5 10 4.5 10 9s-10 4.5-10 9"/><path d="M17 3c0 4.5-10 4.5-10 9s10 4.5 10 9"/><path d="M8 4.5h8M7.5 12h9M8 19.5h8"/></svg>
+)}
+{name === 'pot' && (
+  <svg class={cls} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11h14v5a4 4 0 0 1-4 4H9a4 4 0 0 1-4-4v-5Z"/><path d="M3 11h18M9.5 7.5c0-1.2 1-1.6 1-2.8M13.5 7.5c0-1.2 1-1.6 1-2.8"/></svg>
 )}

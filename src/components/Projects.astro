@@ -1,77 +1,45 @@
 ---
-import { Image } from 'astro:assets';
 import SectionHeading from './SectionHeading.astro';
 import Icon from './Icon.astro';
 import Figures from './Figures.astro';
 import { projects } from '../data/site';
-import fraudDemo from '../assets/fraud-demo.png';
-import recipeSaver from '../assets/recipe-saver.png';
 
-const images: Record<string, ImageMetadata> = { 'fraud-demo': fraudDemo, 'recipe-saver': recipeSaver };
-const bases = ['A', 'C', 'G', 'U'];
-// Deterministic pseudo-random RNA strand for the m6A art, with a DRACH motif highlighted.
-const strand = Array.from({ length: 72 }, (_, i) => bases[(i * 7 + (i % 5) * 3) % 4]);
-const motifAt = new Set([38, 39, 40, 41, 42]);
-const motif = ['G', 'G', 'A', 'C', 'U'];
-motif.forEach((b, k) => (strand[38 + k] = b));
+const button =
+  'inline-flex min-h-10 items-center gap-1.5 rounded-md border border-[var(--border-strong)] px-3 text-sm font-medium transition-colors hover:border-[var(--text)]';
 ---
 
 <section id="projects" class="mx-auto max-w-5xl px-4 pb-8">
   <SectionHeading title="Projects" subtitle="Things I’ve built" />
 
-  <div class="grid gap-14 md:grid-cols-2 md:gap-10">
+  <ol class="divide-y divide-[var(--border)]">
     {projects.map((p) => (
-      <article class="flex flex-col">
-        <div class="relative aspect-[16/10] overflow-hidden rounded-lg border border-[var(--border)] bg-[var(--surface)] p-2">
-          {p.image && images[p.image] ? (
-            <Image
-              src={images[p.image]}
-              alt={p.imageAlt ?? p.title}
-              widths={[480, 960, 1440]}
-              sizes="(min-width: 768px) 480px, 100vw"
-              loading="lazy"
-              class="size-full rounded-sm object-cover object-top dark:opacity-85"
-            />
-          ) : p.art === 'rna' ? (
-            <div class="absolute inset-0 grid place-items-center p-6" aria-hidden="true">
-              <div class="grid grid-cols-12 gap-1.5 font-mono text-xs sm:text-sm">
-                {strand.map((b, j) => (
-                  <span class={motifAt.has(j)
-                    ? 'grid size-5 place-items-center rounded-sm bg-[var(--text)] text-[var(--bg)] sm:size-7'
-                    : 'grid size-5 place-items-center rounded-sm text-[var(--muted)] sm:size-7'}>{b}</span>
-                ))}
-              </div>
-              <span class="absolute right-4 bottom-3 font-mono text-xs text-[var(--muted)]">DRACH motif · m6A site</span>
-            </div>
-          ) : null}
-        </div>
-
-        <h3 class="mt-6 text-xl font-semibold tracking-tight">
-          {p.title}
-          {p.note && <span class="ml-2 align-middle font-mono text-[0.8125rem] font-normal whitespace-nowrap text-[var(--muted)]">{p.note}</span>}
-        </h3>
-        <p class="mt-2"><Figures text={p.blurb} /></p>
-        <ul class="mt-4 list-disc space-y-2 pl-5 text-[0.9375rem] leading-relaxed marker:text-[var(--muted)]">
-          {p.points.map((pt) => <li><Figures text={pt} /></li>)}
-        </ul>
-        <div class="mt-auto pt-4">
-          <p class="font-mono text-[0.8125rem] text-[var(--muted)]">{p.tags.map((t, i, a) => <span class="whitespace-nowrap">{t}{i < a.length - 1 && ' ·'}</span>).reduce((acc, el) => [...acc, ' ', el], [] as any[]).slice(1)}</p>
-          {(p.demo || p.repo) && (
-            <div class="mt-3 flex flex-wrap gap-x-6 text-sm font-medium">
-              {p.demo && (
-                <a href={p.demo} target="_blank" rel="noopener" class="text-link inline-flex min-h-11 items-center gap-1.5">
-                  <Icon name="external" /> Live demo
-                </a>
-              )}
-              {p.repo && (
-                <a href={p.repo} target="_blank" rel="noopener" class="text-link inline-flex min-h-11 items-center gap-1.5">
-                  <Icon name="github" /> Code
-                </a>
-              )}
-            </div>
-          )}
-        </div>
-      </article>
+      <li class="grid grid-cols-[46px_1fr] gap-x-4 py-10 first:pt-0 last:pb-0 sm:grid-cols-[46px_1fr_auto] sm:gap-x-6">
+        <span class="grid size-[46px] place-items-center rounded-md border border-[var(--border)] text-[var(--muted)]">
+          <Icon name={p.icon} class="size-6" />
+        </span>
+        <article class="max-w-[62ch]">
+          <h3 class="pt-2 text-[1.3125rem] leading-[1.875rem] font-semibold tracking-tight">
+            {p.title}
+            {p.note && <span class="ml-2 align-middle font-mono text-[0.8125rem] font-normal tracking-normal whitespace-nowrap text-[var(--muted)]">{p.note}</span>}
+          </h3>
+          <p class="mt-2 text-lg"><Figures text={p.description} /></p>
+          <p class="mt-3 font-mono text-[0.8125rem] text-[var(--muted)]">{p.tags.map((t, i, a) => <span class="whitespace-nowrap">{t}{i < a.length - 1 && ' ·'}</span>).reduce((acc, el) => [...acc, ' ', el], [] as any[]).slice(1)}</p>
+        </article>
+        {(p.demo || p.repo) && (
+          <div class="col-start-2 mt-5 flex flex-wrap gap-2 sm:col-start-3 sm:row-start-1 sm:mt-[3px] sm:justify-end sm:self-start">
+            {p.demo && (
+              <a href={p.demo} target="_blank" rel="noopener" class={button}>
+                <Icon name="external" /> Live demo
+              </a>
+            )}
+            {p.repo && (
+              <a href={p.repo} target="_blank" rel="noopener" class={button}>
+                <Icon name="github" /> Code
+              </a>
+            )}
+          </div>
+        )}
+      </li>
     ))}
-  </div>
+  </ol>
 </section>
