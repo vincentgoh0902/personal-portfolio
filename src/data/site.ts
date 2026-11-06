@@ -13,11 +13,6 @@ export const profile = {
   resume: '',
 };
 
-export const highlights = [
-  { value: '63% → 90%', label: 'retrieval Recall@10 with DSPy query rewriting' },
-  { value: 'Days → mins', label: 'per quarterly report, now in production' },
-  { value: '21 entities', label: 'of APAC HR data unified in one dashboard' },
-];
 
 export type Experience = {
   role: string;
@@ -116,7 +111,7 @@ export const projects: Project[] = [
 export const education = {
   school: 'National University of Singapore',
   degree: 'BSc Data Science and Analytics (Hons)',
-  period: 'Aug 2023 – Jun 2027 (expected)',
+  period: 'Aug 2023 – May 2027 (expected)',
   coursework: [
     { code: 'CS1010S', name: 'Programming Methodology' },
     { code: 'DSA1101', name: 'Introduction to Data Science' },

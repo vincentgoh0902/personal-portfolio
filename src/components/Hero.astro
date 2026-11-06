@@ -1,6 +1,6 @@
 ---
 import Icon from './Icon.astro';
-import { profile, highlights } from '../data/site';
+import { profile } from '../data/site';
 ---
 
 <section id="top" class="pt-36 pb-4 sm:pt-40 sm:pb-8">
@@ -31,14 +31,5 @@ import { profile, highlights } from '../data/site';
         <a href={`mailto:${profile.email}`} aria-label="Email" class="grid size-11 place-items-center rounded-md text-[var(--muted)] transition-colors hover:text-[var(--text)]"><Icon name="mail" class="size-5" /></a>
       </div>
     </div>
-
-    <dl class="mt-14 grid gap-6 border-t border-[var(--border)] pt-6 sm:grid-cols-3 sm:gap-8">
-      {highlights.map((h) => (
-        <div class="flex flex-col">
-          <dt class="order-2 mt-1 text-sm text-[var(--muted)]">{h.label}</dt>
-          <dd class="order-1 text-2xl font-semibold tracking-tight tabular-nums">{h.value}</dd>
-        </div>
-      ))}
-    </dl>
   </div>
 </section>
