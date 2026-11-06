@@ -85,11 +85,10 @@ export const projects: Project[] = [
   {
     title: 'Graph-Based Fraud Detection',
     blurb:
-      'Detecting illicit Bitcoin transactions with graph ML on the Elliptic dataset (200k transactions), evaluated under a strict temporal split.',
+      'Detecting illicit Bitcoin transactions with graph ML on the Elliptic dataset (200k transactions) under a strict temporal split, with Neo4j investigation tooling and a static demo that explains flagged transactions with SHAP.',
     points: [
       'Compared XGBoost against GCN, GraphSAGE, Neo4j graph features and a GNN-embedding hybrid; XGBoost reached 0.79 test PR-AUC and no graph model beat it',
       'Showed why every model collapses after a dark-market shutdown, and that input-drift alarms could not have caught it',
-      'Built Neo4j investigation tooling and a static demo with SHAP explanations of flagged transactions',
     ],
     tags: ['PyTorch Geometric', 'XGBoost', 'Neo4j', 'MLflow', 'SHAP'],
     repo: 'https://github.com/vincentgoh0902/fraud-graph-detection',
@@ -109,6 +108,19 @@ export const projects: Project[] = [
     tags: ['Python', 'scikit-learn', 'Multiple-instance learning', 'Bioinformatics'],
     art: 'rna',
     note: 'Group project',
+  },
+  {
+    title: 'Recipe Saver',
+    blurb:
+      'A self-hosted app that turns a shared TikTok link into a clean recipe card, running on a four-core ARM server with no GPU and no paid APIs.',
+    points: [
+      'Reads the caption, then any linked recipe site, then the voiceover (transcribed locally with whisper.cpp), stopping once it has ingredients and steps',
+      'A rule-based parser handles most captions, with a local 3B LLM as fallback; accuracy on the sample captions rose from 12/14 to 14/14',
+    ],
+    tags: ['Python', 'Docker', 'whisper.cpp', 'Ollama'],
+    repo: 'https://github.com/vincentgoh0902/recipe-saver',
+    image: 'recipe-saver',
+    imageAlt: 'Recipe Saver showing an imported pancake recipe with its title and ingredient quantities',
   },
 ];
 

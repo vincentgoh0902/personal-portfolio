@@ -5,8 +5,9 @@ import Icon from './Icon.astro';
 import Figures from './Figures.astro';
 import { projects } from '../data/site';
 import fraudDemo from '../assets/fraud-demo.png';
+import recipeSaver from '../assets/recipe-saver.png';
 
-const images: Record<string, ImageMetadata> = { 'fraud-demo': fraudDemo };
+const images: Record<string, ImageMetadata> = { 'fraud-demo': fraudDemo, 'recipe-saver': recipeSaver };
 const bases = ['A', 'C', 'G', 'U'];
 // Deterministic pseudo-random RNA strand for the m6A art, with a DRACH motif highlighted.
 const strand = Array.from({ length: 72 }, (_, i) => bases[(i * 7 + (i % 5) * 3) % 4]);
@@ -16,7 +17,7 @@ motif.forEach((b, k) => (strand[38 + k] = b));
 ---
 
 <section id="projects" class="mx-auto max-w-5xl px-4 pb-8">
-  <SectionHeading title="Projects" subtitle="Machine learning projects with careful evaluation and reproducible results." />
+  <SectionHeading title="Projects" subtitle="Things I’ve built" />
 
   <div class="grid gap-14 md:grid-cols-2 md:gap-10">
     {projects.map((p) => (
@@ -26,7 +27,7 @@ motif.forEach((b, k) => (strand[38 + k] = b));
             <Image
               src={images[p.image]}
               alt={p.imageAlt ?? p.title}
-              widths={[480, 800]}
+              widths={[480, 960, 1440]}
               sizes="(min-width: 768px) 480px, 100vw"
               loading="lazy"
               class="size-full rounded-sm object-cover object-top dark:opacity-85"
@@ -53,21 +54,23 @@ motif.forEach((b, k) => (strand[38 + k] = b));
         <ul class="mt-4 list-disc space-y-2 pl-5 text-[0.9375rem] leading-relaxed marker:text-[var(--muted)]">
           {p.points.map((pt) => <li><Figures text={pt} /></li>)}
         </ul>
-        <p class="mt-4 font-mono text-[0.8125rem] text-[var(--muted)]">{p.tags.map((t, i, a) => <span class="whitespace-nowrap">{t}{i < a.length - 1 && ' ·'}</span>).reduce((acc, el) => [...acc, ' ', el], [] as any[]).slice(1)}</p>
-        {(p.demo || p.repo) && (
-          <div class="mt-3 flex flex-wrap gap-x-6 text-sm font-medium">
-            {p.demo && (
-              <a href={p.demo} target="_blank" rel="noopener" class="text-link inline-flex min-h-11 items-center gap-1.5">
-                <Icon name="external" /> Live demo
-              </a>
-            )}
-            {p.repo && (
-              <a href={p.repo} target="_blank" rel="noopener" class="text-link inline-flex min-h-11 items-center gap-1.5">
-                <Icon name="github" /> Code
-              </a>
-            )}
-          </div>
-        )}
+        <div class="mt-auto pt-4">
+          <p class="font-mono text-[0.8125rem] text-[var(--muted)]">{p.tags.map((t, i, a) => <span class="whitespace-nowrap">{t}{i < a.length - 1 && ' ·'}</span>).reduce((acc, el) => [...acc, ' ', el], [] as any[]).slice(1)}</p>
+          {(p.demo || p.repo) && (
+            <div class="mt-3 flex flex-wrap gap-x-6 text-sm font-medium">
+              {p.demo && (
+                <a href={p.demo} target="_blank" rel="noopener" class="text-link inline-flex min-h-11 items-center gap-1.5">
+                  <Icon name="external" /> Live demo
+                </a>
+              )}
+              {p.repo && (
+                <a href={p.repo} target="_blank" rel="noopener" class="text-link inline-flex min-h-11 items-center gap-1.5">
+                  <Icon name="github" /> Code
+                </a>
+              )}
+            </div>
+          )}
+        </div>
       </article>
     ))}
   </div>
