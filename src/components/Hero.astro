@@ -1,11 +1,27 @@
 ---
+import { Image } from 'astro:assets';
 import Icon from './Icon.astro';
+import headshot from '../assets/headshot.jpg';
 import { profile } from '../data/site';
 ---
 
 <section id="top" class="pt-36 pb-8 sm:pt-40">
   <div class="mx-auto max-w-5xl px-4">
-    <h1 class="text-5xl leading-[1.05] font-bold tracking-tight sm:text-7xl">{profile.name}</h1>
+    <div class="flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:gap-7">
+      <Image
+        src={headshot}
+        alt={profile.name}
+        width={112}
+        height={112}
+        densities={[1, 2, 3]}
+        format="webp"
+        quality={80}
+        loading="eager"
+        fetchpriority="high"
+        class="size-[88px] shrink-0 rounded-full object-cover sm:size-28"
+      />
+      <h1 class="text-5xl leading-[1.05] font-bold tracking-tight sm:text-7xl">{profile.name}</h1>
+    </div>
     <p class="mt-5 font-mono text-[0.8125rem] text-[var(--muted)]">{profile.tagline}</p>
 
     <p class="mt-6 max-w-2xl text-lg">
