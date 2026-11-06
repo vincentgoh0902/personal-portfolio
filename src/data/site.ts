@@ -2,9 +2,13 @@
 
 export const profile = {
   name: 'Vincent Goh',
-  role: 'Data Science & Analytics @ NUS',
-  pitch:
-    'I build LLM-powered tools and production data apps that turn slow, manual analysis into something people can use themselves.',
+  headline: 'I build LLM and data tools, and measure whether they work.',
+  tagline: 'Data Science · LLMs · AI Engineering',
+  // The first sentence of the summary doubles as the meta / Open Graph description.
+  summary: [
+    'I’m a final-year Data Science student at NUS and a Data Science Intern at GovTech, where I build LLM-powered tools from prototype to production.',
+    'Previously at CPF Board, I built a RAG agent that helps analysts find the right data in a large warehouse.',
+  ],
   location: 'Singapore',
   email: 'vincentgoh.kaiswee@gmail.com',
   github: 'https://github.com/vincentgoh0902',

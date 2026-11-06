@@ -9,7 +9,7 @@ interface Props {
 
 const {
   title = `${profile.name} · Data Science`,
-  description = `${profile.name}: ${profile.role}. ${profile.pitch}`,
+  description = profile.summary[0],
 } = Astro.props;
 
 const site = Astro.site;
