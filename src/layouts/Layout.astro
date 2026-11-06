@@ -25,7 +25,7 @@ const canonical = site ? new URL(Astro.url.pathname, site).href : undefined;
     <meta name="description" content={description} />
     {canonical && <link rel="canonical" href={canonical} />}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="theme-color" content="#141311" />
+    <meta name="theme-color" content="#f3ecdf" />
 
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
@@ -34,12 +34,12 @@ const canonical = site ? new URL(Astro.url.pathname, site).href : undefined;
     <meta name="twitter:card" content="summary" />
 
     <script is:inline>
-      // Set theme before paint to avoid a flash. A saved choice wins; otherwise follow the device setting.
+      // Set theme before paint to avoid a flash. A saved choice wins; otherwise default to the cream light theme.
       (() => {
         const d = document.documentElement;
         let t = null;
         try { t = localStorage.getItem('theme'); } catch {}
-        d.dataset.theme = t ?? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        d.dataset.theme = t === 'dark' ? 'dark' : 'light';
       })();
     </script>
   </head>
