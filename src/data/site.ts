@@ -5,8 +5,8 @@ export const profile = {
   tagline: 'Data Science · LLMs · AI Engineering',
   // The first and last sentences of the summary double as the meta / Open Graph description.
   summary: [
-    'I’m a final-year Data Science student at NUS and a Data Science Intern at GovTech, where I build LLM-powered tools from prototype to production.',
-    'Previously at CPF Board, I built a RAG agent that helps analysts find the right data in a large warehouse.',
+    'I’m a final-year Data Science student at NUS and a Data Science Intern at GovTech, building LLM-powered tools from prototype to production.',
+    'Before that, I built a RAG agent for analysts at CPF Board.',
     'I care most about measuring whether these systems actually work.',
   ],
   location: 'Singapore',
