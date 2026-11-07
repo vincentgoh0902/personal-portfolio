@@ -35,8 +35,8 @@ export const experience: Experience[] = [
     summary:
       'Built an internal analytics platform that replaced a manual, spreadsheet-based reporting process with a self-service web app, now in production.',
     points: [
-      'Developed the full-stack app (Next.js, TypeScript, PostgreSQL) on Databricks, cutting each quarterly report from days of manual work to minutes',
-      'Built LLM pipelines that draft feedback summaries and trend insights for admins to review before publishing, and evaluated the quality of their output',
+      'Built the full-stack app (Next.js, TypeScript, PostgreSQL) on Databricks, cutting each quarterly report from days of manual work to minutes',
+      'Added LLM features in production: draft summaries and trend insights that admins review before publishing, and a chat assistant that answers questions about each product’s results, with output quality checked against the source data',
       'Took the app from prototype to production with single sign-on, role-based access control, automated deployment and a comprehensive test suite',
     ],
     tags: ['Next.js', 'TypeScript', 'PostgreSQL', 'Databricks', 'LLMs'],
@@ -48,21 +48,21 @@ export const experience: Experience[] = [
     summary:
       'Built an AI agent that helps analysts find the right data in a large data warehouse, as part of a multi-agent analytics assistant.',
     points: [
-      'Built a retrieval-augmented generation (RAG) agent that maps natural-language questions to relevant tables and generates PySpark queries',
-      'Designed an LLM query-rewriting module with DSPy that raised retrieval accuracy (Recall@10) from 63% to 90% on a test set',
-      'Created an automated evaluation harness so every change was measured before it shipped',
+      'Built a RAG agent that maps plain-language questions to the right tables and generates PySpark queries for them',
+      'Designed a query-rewriting module with DSPy that raised retrieval accuracy (Recall@10) from 63% to 90% on a test set',
+      'Built an evaluation harness that measured every prompt change against a golden set before it was kept',
     ],
     tags: ['RAG', 'DSPy', 'PySpark', 'Multi-agent', 'Evaluation'],
   },
   {
-    role: 'Data Analyst',
+    role: 'Data Analyst Intern',
     company: 'DIC Asia Pacific',
     period: 'Jun 2025 – Aug 2025',
     summary:
       'Built the department’s first Power BI dashboard, bringing together HR data from 21 APAC entities for the first time.',
     points: [
       'Integrated multi-entity HR data with Power Query and a unified data model, enabling the first cross-entity analysis of productivity and cost',
-      'Replaced manual monthly reporting with an auto-refreshing dashboard and DAX KPIs, saving about three days of work each cycle',
+      'Automated monthly reporting with an auto-refreshing dashboard and DAX KPIs, saving about three days of work each cycle',
     ],
     tags: ['Power BI', 'Power Query', 'DAX', 'Data modelling'],
   },
