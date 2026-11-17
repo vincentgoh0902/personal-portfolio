@@ -7,8 +7,10 @@ interface Props {
 const { text } = Astro.props;
 
 const num = String.raw`\d+(?:\.\d+)?(?:%|k)?`;
+// Figures written in words, which the numeric pattern can't see.
+const wordFigures = String.raw`days of manual work to minutes|about three days`;
 const figure = new RegExp(
-  String.raw`(?<![\w@])${num}(?:\s+(?:to|→|of)\s+${num})?(?:\s+(?:test\s+)?(?:PR-AUC|ROC AUC))?(?![\w@])`,
+  String.raw`(?<![\w@])(?:${wordFigures}|${num}(?:\s+(?:to|→|of)\s+${num})?(?:\s+(?:test\s+)?(?:PR-AUC|ROC AUC))?)(?![\w@])`,
   'g',
 );
 

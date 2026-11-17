@@ -5,12 +5,13 @@ import headshot from '../assets/headshot.jpg';
 import { profile } from '../data/site';
 ---
 
-<section id="top" class="pt-36 pb-8 sm:pt-40">
+<section id="top" class="pt-32 pb-8 md:pt-28">
   <div class="mx-auto max-w-5xl px-4">
     <div class="flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:gap-7">
+      <!-- Decorative: the name is in the h1 right beside it. -->
       <Image
         src={headshot}
-        alt={profile.name}
+        alt=""
         width={112}
         height={112}
         densities={[1, 2, 3]}
@@ -27,18 +28,18 @@ import { profile } from '../data/site';
     <p class="mt-6 max-w-2xl text-lg">
       {profile.summary.join(' ')}
     </p>
+    <p class="mt-4 max-w-2xl font-medium">{profile.availability}</p>
 
-    <div class="mt-8 flex flex-wrap items-center gap-3">
-      {profile.resume && (
-        <a href={profile.resume} class="inline-flex items-center gap-2 rounded-md border border-[var(--border-strong)] px-5 py-2.5 text-sm font-medium transition-colors hover:border-[var(--text)]">
-          <Icon name="file" /> Resume
-        </a>
-      )}
-      <div class="-ml-3 flex items-center gap-1">
-        <a href={profile.github} target="_blank" rel="noopener" aria-label="GitHub" class="grid size-11 place-items-center rounded-md text-[var(--muted)] transition-colors hover:text-[var(--text)]"><Icon name="github" class="size-5" /></a>
-        <a href={profile.linkedin} target="_blank" rel="noopener" aria-label="LinkedIn" class="grid size-11 place-items-center rounded-md text-[var(--muted)] transition-colors hover:text-[var(--text)]"><Icon name="linkedin" class="size-5" /></a>
-        <a href={`mailto:${profile.email}`} aria-label="Email" class="grid size-11 place-items-center rounded-md text-[var(--muted)] transition-colors hover:text-[var(--text)]"><Icon name="mail" class="size-5" /></a>
-      </div>
+    <div class="mt-7 flex flex-wrap gap-3">
+      <a href={`mailto:${profile.email}`} class="btn btn-primary">
+        <Icon name="mail" /> {profile.email}
+      </a>
+      <a href={profile.linkedin} target="_blank" rel="noopener" class="btn btn-secondary">
+        <Icon name="linkedin" /> LinkedIn<span class="sr-only"> (opens in a new tab)</span>
+      </a>
+      <a href={profile.github} target="_blank" rel="noopener" class="btn btn-secondary">
+        <Icon name="github" /> GitHub<span class="sr-only"> (opens in a new tab)</span>
+      </a>
     </div>
   </div>
 </section>

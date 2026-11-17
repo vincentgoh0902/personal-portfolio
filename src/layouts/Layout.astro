@@ -43,12 +43,13 @@ const ogImage = site ? new URL('/og.png', site).href : undefined;
     {ogImage && <meta name="twitter:image" content={ogImage} />}
 
     <script is:inline>
-      // Set theme before paint to avoid a flash. A saved choice wins; otherwise default to the cream light theme.
+      // Set theme before paint to avoid a flash. A saved choice wins; otherwise follow the device setting.
       (() => {
         const d = document.documentElement;
         let t = null;
         try { t = localStorage.getItem('theme'); } catch {}
-        d.dataset.theme = t === 'dark' ? 'dark' : 'light';
+        if (t !== 'dark' && t !== 'light') t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        d.dataset.theme = t;
       })();
     </script>
   </head>

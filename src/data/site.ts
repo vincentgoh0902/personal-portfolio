@@ -13,8 +13,8 @@ export const profile = {
   email: 'vincentgoh.kaiswee@gmail.com',
   github: 'https://github.com/vincentgoh0902',
   linkedin: 'https://www.linkedin.com/in/goh-kai-swee-vincent/',
-  // Drop your resume at public/resume.pdf and set this to '/resume.pdf'
-  resume: '',
+  // Shown under the intro so a recruiter sees the start date without scrolling.
+  availability: 'Graduating from NUS in May 2027 · open to data science and AI engineering roles',
 };
 
 
@@ -72,7 +72,6 @@ export type Project = {
   title: string;
   description: string;
   tags: string[];
-  icon: 'network' | 'dna' | 'pot' | 'route';
   repo?: string;
   demo?: string;
   note?: string;
@@ -84,7 +83,6 @@ export const projects: Project[] = [
     description:
       'Checks chatbot-written itineraries against real opening hours, holidays, travel times and hotel reviews, running six checks as MCP tools in a LangGraph workflow. LLM-proposed fixes are re-checked by code: valid fixes for 39 of 40 problems, with 36 of 36 prompt-injection attacks resisted.',
     tags: ['LangGraph', 'MCP', 'FastAPI', 'Claude API', 'PostgreSQL'],
-    icon: 'route',
     repo: 'https://github.com/vincentgoh0902/trip-feasibility',
     demo: 'https://trip-feasibility.tail9b08fe.ts.net/',
   },
@@ -93,7 +91,6 @@ export const projects: Project[] = [
     description:
       'Graph ML vs XGBoost for Bitcoin fraud under a strict temporal split. XGBoost won at 0.79 PR-AUC, and I traced a 0.92 → 0.04 collapse to concept drift.',
     tags: ['PyTorch Geometric', 'XGBoost', 'Neo4j', 'MLflow', 'SHAP'],
-    icon: 'network',
     repo: 'https://github.com/vincentgoh0902/fraud-graph-detection',
     demo: 'https://vincentgoh0902.github.io/fraud-graph-detection/',
   },
@@ -102,16 +99,7 @@ export const projects: Project[] = [
     description:
       'Classifying RNA modification sites from nanopore signals, comparing classical models with a multiple-instance learning model, evaluated by PR-AUC on a fully held-out external dataset. My part: I built the classical models (Extra Trees, random forest, gradient boosting, logistic regression and RBF SVM).',
     tags: ['Python', 'scikit-learn', 'Multiple-instance learning', 'Bioinformatics'],
-    icon: 'dna',
     note: 'Group project',
-  },
-  {
-    title: 'Recipe Saver',
-    description:
-      'A self-hosted app that turns a shared TikTok link into a recipe card, using local speech-to-text and a local LLM.',
-    tags: ['Python', 'Docker', 'whisper.cpp', 'Ollama'],
-    icon: 'pot',
-    repo: 'https://github.com/vincentgoh0902/recipe-saver',
   },
 ];
 

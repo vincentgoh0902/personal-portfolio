@@ -73,6 +73,44 @@ dd {
   text-wrap: pretty;
 }
 
+/* Buttons. Primary is filled ink; secondary is an Edge Taupe outline that turns green on hover. */
+@layer components {
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: 2.75rem;
+    padding-inline: 1.25rem;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 500;
+    transition: opacity 0.2s, color 0.2s, border-color 0.2s;
+  }
+  .btn-primary {
+    background: var(--text);
+    color: var(--bg);
+  }
+  .btn-primary:hover {
+    opacity: 0.85;
+  }
+  .btn-secondary {
+    border: 1px solid var(--border-strong);
+  }
+  .btn-secondary:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+}
+
+/* The section being read: full ink with a ruled underline, like a marked page. */
+.nav-link[aria-current] {
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: var(--border-strong);
+  text-underline-offset: 0.4em;
+}
+
 .text-link {
   text-decoration: underline;
   text-decoration-color: var(--border);

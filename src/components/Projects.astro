@@ -3,9 +3,6 @@ import SectionHeading from './SectionHeading.astro';
 import Icon from './Icon.astro';
 import Figures from './Figures.astro';
 import { projects } from '../data/site';
-
-const button =
-  'inline-flex min-h-10 items-center gap-1.5 rounded-md border border-[var(--border-strong)] px-3 text-sm font-medium transition-colors hover:border-[var(--text)]';
 ---
 
 <section id="projects" class="mx-auto max-w-5xl px-4 pb-8">
@@ -13,28 +10,23 @@ const button =
 
   <ol class="divide-y divide-[var(--border)]">
     {projects.map((p) => (
-      <li class="grid grid-cols-[46px_1fr] gap-x-4 py-10 first:pt-0 last:pb-0 sm:grid-cols-[46px_1fr_auto] sm:gap-x-6">
-        <span class="grid size-[46px] place-items-center rounded-md border border-[var(--border)] text-[var(--muted)]">
-          <Icon name={p.icon} class="size-6" />
-        </span>
-        <article class="max-w-[62ch]">
-          <h3 class="pt-2 text-[1.3125rem] leading-[1.875rem] font-semibold tracking-tight">
-            {p.title}
-            {p.note && <span class="ml-2 align-middle font-mono text-[0.8125rem] font-normal tracking-normal whitespace-nowrap text-[var(--muted)]">{p.note}</span>}
-          </h3>
-          <p class="mt-2 text-lg"><Figures text={p.description} /></p>
+      <li class="grid gap-4 py-8 first:pt-0 last:pb-0 sm:grid-cols-[14.5rem_1fr] sm:gap-8">
+        <article class="max-w-[34rem] sm:col-start-2 sm:row-start-1">
+          <h3 class="text-[1.3125rem] leading-[1.875rem] font-semibold tracking-tight">{p.title}</h3>
+          <p class="mt-2"><Figures text={p.description} /></p>
           <p class="mt-3 font-mono text-[0.8125rem] text-[var(--muted)]">{p.tags.map((t, i, a) => <span class="whitespace-nowrap">{t}{i < a.length - 1 && ' ·'}</span>).reduce((acc, el) => [...acc, ' ', el], [] as any[]).slice(1)}</p>
         </article>
-        {(p.demo || p.repo) && (
-          <div class="col-start-2 mt-5 flex flex-wrap gap-2 sm:col-start-3 sm:row-start-1 sm:mt-[3px] sm:justify-end sm:self-start">
+        {(p.note || p.demo || p.repo) && (
+          <div class="flex flex-wrap items-center gap-2 sm:col-start-1 sm:row-start-1 sm:flex-col sm:items-start">
+            {p.note && <p class="font-mono text-[0.8125rem] text-[var(--muted)] sm:pt-1.5">{p.note}</p>}
             {p.demo && (
-              <a href={p.demo} target="_blank" rel="noopener" class={button}>
-                <Icon name="external" /> Live demo
+              <a href={p.demo} target="_blank" rel="noopener" class="btn btn-secondary px-3.5">
+                <Icon name="external" /> Live demo<span class="sr-only"> of {p.title} (opens in a new tab)</span>
               </a>
             )}
             {p.repo && (
-              <a href={p.repo} target="_blank" rel="noopener" class={button}>
-                <Icon name="github" /> Code
+              <a href={p.repo} target="_blank" rel="noopener" class="btn btn-secondary px-3.5">
+                <Icon name="github" /> Code<span class="sr-only"> for {p.title} (opens in a new tab)</span>
               </a>
             )}
           </div>
