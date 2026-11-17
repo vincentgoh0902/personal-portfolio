@@ -72,13 +72,22 @@ export type Project = {
   title: string;
   description: string;
   tags: string[];
-  icon: 'network' | 'dna' | 'pot';
+  icon: 'network' | 'dna' | 'pot' | 'route';
   repo?: string;
   demo?: string;
   note?: string;
 };
 
 export const projects: Project[] = [
+  {
+    title: 'Trip Feasibility Checker',
+    description:
+      'Checks chatbot-written itineraries against real opening hours, holidays, travel times and hotel reviews, running six checks as MCP tools in a LangGraph workflow. LLM-proposed fixes are re-checked by code: valid fixes for 39 of 40 problems, with 36 of 36 prompt-injection attacks resisted.',
+    tags: ['LangGraph', 'MCP', 'FastAPI', 'Claude API', 'PostgreSQL'],
+    icon: 'route',
+    repo: 'https://github.com/vincentgoh0902/trip-feasibility',
+    demo: 'https://trip-feasibility.tail9b08fe.ts.net/',
+  },
   {
     title: 'Graph-Based Fraud Detection',
     description:
