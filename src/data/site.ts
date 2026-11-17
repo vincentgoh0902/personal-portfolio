@@ -14,7 +14,8 @@ export const profile = {
   github: 'https://github.com/vincentgoh0902',
   linkedin: 'https://www.linkedin.com/in/goh-kai-swee-vincent/',
   // Shown under the intro so a recruiter sees the start date without scrolling.
-  availability: 'Graduating from NUS in May 2027 · open to data science and AI engineering roles',
+  availability: 'Graduating from NUS in May 2027 · Open to Data Science and AI Engineering roles',
+  contact: 'I’m graduating from NUS in May 2027 and open to Data Science and AI Engineering roles. The fastest way to reach me is email.',
 };
 
 

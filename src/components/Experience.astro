@@ -13,7 +13,7 @@ import { experience } from '../data/site';
         <p class="font-mono text-[0.8125rem] text-[var(--muted)] sm:pt-2">{job.period}</p>
         <article class="max-w-[34rem]">
           <h3 class="text-lg font-semibold">
-            {job.role} <span class="font-normal text-[var(--muted)]" aria-hidden="true">·</span> {job.company}
+            {job.role} <span class="font-normal text-[var(--muted)]" aria-hidden="true">·</span><span class="sr-only">at</span> {job.company}
           </h3>
           <p class="mt-2"><Figures text={job.summary} /></p>
           <ul class="mt-4 list-disc space-y-2 pl-5 text-[0.9375rem] leading-relaxed marker:text-[var(--muted)]">

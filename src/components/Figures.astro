@@ -14,14 +14,15 @@ const figure = new RegExp(
   'g',
 );
 
-const parts: { text: string; figure: boolean }[] = [];
+const parts: { text: string; figure: boolean; nowrap?: boolean }[] = [];
 let last = 0;
 for (const m of text.matchAll(figure)) {
   if (m.index! > last) parts.push({ text: text.slice(last, m.index), figure: false });
-  parts.push({ text: m[0], figure: true });
+  // Numeric figures stay on one line ("0.79 PR-AUC" must not break at the hyphen); word figures may wrap.
+  parts.push({ text: m[0], figure: true, nowrap: /^\d/.test(m[0]) });
   last = m.index! + m[0].length;
 }
 if (last < text.length) parts.push({ text: text.slice(last), figure: false });
 ---
 
-{parts.map((p) => (p.figure ? <strong class="font-semibold">{p.text}</strong> : p.text))}
+{parts.map((p) => (p.figure ? <strong class:list={['font-semibold', p.nowrap && 'whitespace-nowrap']}>{p.text}</strong> : p.text))}
