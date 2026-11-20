@@ -2,10 +2,9 @@
 import Icon from './Icon.astro';
 import SectionHeading from './SectionHeading.astro';
 import { profile } from '../data/site';
-const year = new Date().getFullYear();
 ---
 
-<section id="contact" class="mx-auto max-w-5xl px-4 pb-10">
+<section id="contact" class="mx-auto max-w-5xl px-4">
   <SectionHeading title="Let’s talk" />
 
   <div class="grid gap-2 sm:grid-cols-[14.5rem_1fr] sm:gap-8">
@@ -27,8 +26,4 @@ const year = new Date().getFullYear();
       </div>
     </div>
   </div>
-
-  <footer class="mt-16 font-mono text-xs text-[var(--muted)]">
-    <p>© {year} {profile.name}</p>
-  </footer>
 </section>

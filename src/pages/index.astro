@@ -6,15 +6,21 @@ import Experience from '../components/Experience.astro';
 import Projects from '../components/Projects.astro';
 import Education from '../components/Education.astro';
 import Contact from '../components/Contact.astro';
+import { profile } from '../data/site';
+const year = new Date().getFullYear();
 ---
 
 <Layout>
+  <a href="#main" class="skip-link">Skip to content</a>
   <Nav />
-  <main>
+  <main id="main">
     <Hero />
     <Experience />
     <Projects />
     <Education />
     <Contact />
   </main>
+  <footer class="mx-auto mt-16 max-w-5xl px-4 pb-10 font-mono text-xs text-[var(--muted)]">
+    <p>© {year} {profile.name}</p>
+  </footer>
 </Layout>

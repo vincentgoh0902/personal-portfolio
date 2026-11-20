@@ -103,6 +103,24 @@ dd {
   }
 }
 
+/* Hidden until focused by keyboard; then a primary-button chip above the header. */
+.skip-link {
+  position: fixed;
+  top: 0.5rem;
+  left: 1rem;
+  z-index: 60;
+  padding: 0.625rem 1rem;
+  border-radius: 6px;
+  background: var(--text);
+  color: var(--bg);
+  font-size: 0.875rem;
+  font-weight: 500;
+  transform: translateY(-200%);
+}
+.skip-link:focus-visible {
+  transform: none;
+}
+
 /* The section being read: full ink with a ruled underline, like a marked page. */
 .nav-link[aria-current] {
   color: var(--text);
