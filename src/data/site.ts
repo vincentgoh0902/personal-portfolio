@@ -109,7 +109,7 @@ export const projects: Project[] = [
   {
     title: 'Graph-Based Fraud Detection',
     description:
-      'Graph ML vs XGBoost for Bitcoin fraud under a strict temporal split. XGBoost won at 0.79 PR-AUC, and I traced an F1 collapse from 0.89 to 0.03 to concept drift.',
+      'Graph ML vs XGBoost for Bitcoin fraud under a strict temporal split. XGBoost won at 0.79 PR-AUC, and I traced a PR-AUC collapse from 0.92 to 0.04 to concept drift.',
     tags: ['PyTorch Geometric', 'XGBoost', 'Neo4j', 'MLflow', 'SHAP'],
     repo: 'https://github.com/vincentgoh0902/fraud-graph-detection',
     demo: 'https://vincentgoh0902.github.io/fraud-graph-detection/',
