@@ -25,6 +25,8 @@ export type Experience = {
   period: string;
   summary: string;
   points: string[];
+  // Optional: several projects under one role, each shown as its own sub-heading.
+  projects?: { name: string; summary: string; points: string[] }[];
   tags: string[];
 };
 
@@ -33,14 +35,31 @@ export const experience: Experience[] = [
     role: 'Data Science Intern',
     company: 'GovTech Singapore',
     period: 'Jul 2026 – Present',
-    summary:
-      'Built an internal analytics platform that replaced a manual, spreadsheet-based reporting process with a self-service web app, now in production.',
-    points: [
-      'Built the full-stack app (Next.js, TypeScript, PostgreSQL) on Databricks, cutting each quarterly report from days of manual work to minutes',
-      'Added LLM features in production: draft summaries and trend insights that admins review before publishing, and a chat assistant that answers questions about each product’s results, with output quality checked against the source data',
-      'Took the app from prototype to production with single sign-on, role-based access control, automated deployment and a comprehensive test suite',
+    summary: 'Building internal tools on Databricks, from prototype to production.',
+    points: [],
+    projects: [
+      {
+        name: 'GRC AI Alerter',
+        summary:
+          'An LLM tool that checks product teams’ operational documents against 16 IM8 access controls, so gaps turn up before an audit instead of during it. Piloted with 13 product teams on over 1,300 documents.',
+        points: [
+          'An LLM pulls each fact the checks need from SOPs, meeting minutes and risk registers, with a quote and page as evidence, and code decides pass or fail against Risk & Assurance’s thresholds, so every result can be repeated and traced',
+          'Reached 93% fact-level extraction accuracy on a labelled sample of real documents, and caught 50 of the 54 gaps found in the manual review',
+          'Built it solo, end to end: an upload-triggered pipeline, parsers for Word, PDF, Excel and scanned files, a rule engine, email alerts and a dashboard',
+        ],
+      },
+      {
+        name: 'CSAT Reporting Platform',
+        summary:
+          'Replaced a manual, spreadsheet-based reporting process with a self-service web app, now in production.',
+        points: [
+          'Built the full-stack app (Next.js, TypeScript, PostgreSQL) on Databricks, cutting each quarterly report from days of manual work to minutes',
+          'Added LLM features in production: draft summaries and trend insights that admins review before publishing, and a chat assistant that answers questions about each product’s results, with output quality checked against the source data',
+          'Took the app from prototype to production with single sign-on, role-based access control, automated deployment and a comprehensive test suite',
+        ],
+      },
     ],
-    tags: ['Next.js', 'TypeScript', 'PostgreSQL', 'Databricks', 'LLMs'],
+    tags: ['Databricks', 'LLMs', 'Python', 'Next.js', 'TypeScript', 'PostgreSQL'],
   },
   {
     role: 'Data Science Intern',

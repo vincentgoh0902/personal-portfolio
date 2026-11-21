@@ -16,9 +16,20 @@ import { experience } from '../data/site';
             {job.role} <span class="font-normal text-[var(--muted)]" aria-hidden="true">·</span><span class="sr-only">at</span> {job.company}
           </h3>
           <p class="mt-2"><Figures text={job.summary} /></p>
-          <ul class="mt-4 list-disc space-y-2 pl-5 text-[0.9375rem] leading-relaxed marker:text-[var(--muted)]">
-            {job.points.map((p) => <li><Figures text={p} /></li>)}
-          </ul>
+          {job.points.length > 0 && (
+            <ul class="mt-4 list-disc space-y-2 pl-5 text-[0.9375rem] leading-relaxed marker:text-[var(--muted)]">
+              {job.points.map((p) => <li><Figures text={p} /></li>)}
+            </ul>
+          )}
+          {job.projects?.map((proj) => (
+            <div class="mt-6">
+              <h4 class="font-semibold">{proj.name}</h4>
+              <p class="mt-1"><Figures text={proj.summary} /></p>
+              <ul class="mt-3 list-disc space-y-2 pl-5 text-[0.9375rem] leading-relaxed marker:text-[var(--muted)]">
+                {proj.points.map((p) => <li><Figures text={p} /></li>)}
+              </ul>
+            </div>
+          ))}
           <p class="mt-4 font-mono text-[0.8125rem] text-[var(--muted)]">{job.tags.map((t, i, a) => <span class="whitespace-nowrap">{t}{i < a.length - 1 && ' ·'}</span>).reduce((acc, el) => [...acc, ' ', el], [] as any[]).slice(1)}</p>
         </article>
       </li>
